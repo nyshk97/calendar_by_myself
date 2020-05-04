@@ -1,11 +1,17 @@
 import React from "react";
 import dayjs from "dayjs";
-import { isSameDay, isFirstDay, isSameMonth } from "../../services/calendar";
+import {
+  isSameDay,
+  isFirstDay,
+  isSameMonth,
+  getMonth,
+} from "../../services/calendar";
 import styled from "styled-components";
 
-const CalendarElement = ({ day }) => {
+const CalendarElement = ({ day, month }) => {
   const today = dayjs();
-  const isCurrentMonth = isSameMonth(day, today);
+  const currentMonth = getMonth(month);
+  const isCurrentMonth = isSameMonth(day, currentMonth);
   const format = isFirstDay(day) ? "M月D日" : "D";
   const isToday = isSameDay(day, today);
   return (
