@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import CalendarBoard from "./components/CalendarBoard/container";
 import Navigation from "./components/Navigation/container";
+import AddScheduleDialog from "./components/AddScheduleDialog/container";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./redux/rootReducer";
@@ -18,6 +19,7 @@ const App = () => (
     <MuiPickersUtilsProvider utils={DayjsUtils}>
       <Navigation />
       <CalendarBoard />
+      <AddScheduleDialog />
     </MuiPickersUtilsProvider>
   </Provider>
 );
