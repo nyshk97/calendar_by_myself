@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const Schedule = ({ schedule }) => {
+const Schedule = ({ schedule, onClickSchedule }) => {
   console.log(schedule);
-  return <ScheduleItem>{schedule.title}</ScheduleItem>;
+  return (
+    <ScheduleItem onClick={(e) => onClickSchedule(schedule, e)}>
+      {schedule.title}
+    </ScheduleItem>
+  );
 };
 
 const ScheduleItem = styled.div`

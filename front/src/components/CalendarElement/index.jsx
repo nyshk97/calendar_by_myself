@@ -9,7 +9,7 @@ import {
 import styled from "styled-components";
 import Schedule from "../Schedule";
 
-const CalendarElement = ({ day, month, schedules }) => {
+const CalendarElement = ({ day, month, schedules, onClickSchedule }) => {
   const today = dayjs();
   const currentMonth = getMonth(month);
   const isCurrentMonth = isSameMonth(day, currentMonth);
@@ -28,7 +28,7 @@ const CalendarElement = ({ day, month, schedules }) => {
       </span>
       <div>
         {schedules.map((e) => (
-          <Schedule key={e.id} schedule={e} />
+          <Schedule key={e.id} schedule={e} onClickSchedule={onClickSchedule} />
         ))}
       </div>
     </Block>
