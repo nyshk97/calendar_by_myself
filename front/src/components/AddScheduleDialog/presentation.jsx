@@ -18,6 +18,7 @@ const AddScheduleDialog = ({
   },
   closeDialog,
   setSchedule,
+  saveSchedule,
 }) => {
   return (
     <Dialog open={isDialogOpen} onClose={closeDialog}>
@@ -47,19 +48,19 @@ const AddScheduleDialog = ({
           <TextField
             placeholder="場所を追加"
             value={location}
-            onChange={(e) => setSchedule({ location: e })}
+            onChange={(e) => setSchedule({ location: e.target.value })}
           />
         </div>
         <div className="row">
           <TextField
             placeholder="説明を追加"
             value={description}
-            onChange={(e) => setSchedule({ description: e })}
+            onChange={(e) => setSchedule({ description: e.target.value })}
           />
         </div>
       </DialogContent>
       <DialogActions>
-        <Button>保存</Button>
+        <Button onClick={saveSchedule}>保存</Button>
       </DialogActions>
     </Dialog>
   );

@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 const init = {
   form: {
     title: "",
-    desctiption: "",
+    description: "",
     date: null,
     location: "",
     date: dayjs(),
