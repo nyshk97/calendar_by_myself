@@ -8,6 +8,7 @@ import {
   Input,
   IconButton,
 } from "@material-ui/core";
+import styled from "styled-components";
 import { Close } from "@material-ui/icons";
 import { DatePicker } from "@material-ui/pickers";
 
@@ -15,11 +16,14 @@ const AddScheduleDialog = ({
   schedule: {
     form: { title, location, description, date },
     isDialogOpen,
+    isStartEdit,
   },
   closeDialog,
   setSchedule,
   saveSchedule,
+  setIsEditStart,
 }) => {
+  const isTitleInvalid = !title && isStartEdit;
   return (
     <Dialog open={isDialogOpen} onClose={closeDialog}>
       <DialogActions>
@@ -34,7 +38,12 @@ const AddScheduleDialog = ({
             placeholder="タイトルと日時を追加"
             value={title}
             onChange={(e) => setSchedule({ title: e.target.value })}
+            onBlur={setIsEditStart}
+            error={isTitleInvalid}
           />
+          <div className="err">
+            {isTitleInvalid && <Err>タイトルは必須です</Err>}
+          </div>
         </div>
         <div className="row">
           <DatePicker
@@ -65,5 +74,10 @@ const AddScheduleDialog = ({
     </Dialog>
   );
 };
+
+const Err = styled.div`
+  color: red;
+  font-size: 12px;
+`;
 
 export default AddScheduleDialog;
